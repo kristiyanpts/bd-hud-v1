@@ -675,15 +675,14 @@ local function getFuelLevel(vehicle)
     local updateTick = GetGameTimer()
     if (updateTick - lastFuelUpdate) > 2000 then
         lastFuelUpdate = updateTick
-        lastFuelCheck = math.floor(exports['cdn-fuel']:GetFuel(vehicle))
+        lastFuelCheck = math.floor(exports[Config.FuelScript]:GetFuel(vehicle))
     end
     return lastFuelCheck
 end
 
 function round(x)
-    return x>=0 and math.floor(x+0.5) or math.ceil(x-0.5)
-  end
-  
+    return x >= 0 and math.floor(x + 0.5) or math.ceil(x - 0.5)
+end
 
 -- HUD Update loop
 
@@ -708,7 +707,8 @@ CreateThread(function()
                     armed = false
                 end
             end
-            playerDead = IsEntityDead(player) or PlayerData.metadata['inlaststand'] or PlayerData.metadata['isdead'] or false
+            playerDead = IsEntityDead(player) or PlayerData.metadata['inlaststand'] or PlayerData.metadata['isdead'] or
+                false
             parachute = GetPedParachuteState(player)
             -- Stamina
             if not IsEntityInWater(player) then
@@ -860,7 +860,7 @@ CreateThread(function()
         if LocalPlayer.state.isLoggedIn then
             local ped = PlayerPedId()
             if IsPedInAnyVehicle(ped, false) and not IsThisModelABicycle(GetEntityModel(GetVehiclePedIsIn(ped, false))) then
-                if exports['cdn-fuel']:GetFuel(GetVehiclePedIsIn(ped, false)) <= 20 then -- At 20% Fuel Left
+                if exports[Config.FuelScript]:GetFuel(GetVehiclePedIsIn(ped, false)) <= 20 then -- At 20% Fuel Left
                     if Menu.isLowFuelChecked then
                         TriggerServerEvent('InteractSound_SV:PlayOnSource', 'pager', 0.10)
                         QBCore.Functions.Notify(Lang:t('notify.low_fuel'), 'error')

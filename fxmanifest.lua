@@ -1,8 +1,9 @@
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-description 'qb-hud'
-version '2.2.0'
+description 'FiveM HUD Script by Bulgar Development'
+author 'Bulgar Development'
+version '1.0.0'
 
 shared_scripts {
     '@qb-core/shared/locale.lua',
@@ -27,4 +28,7 @@ files {
 
 escrow_ignore {
     "config.lua",
+    "locales/*.lua",
+    "client.lua",
+    "server.lua"
 }
