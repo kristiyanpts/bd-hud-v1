@@ -2,6 +2,8 @@
 
 This is HUD is based on the default qb-core hud, but it redesigned and used in Bulgar OG RP. You can use this HUD for your needs and do your own changes to it, but cannot resell it etc.
 
+### RENAME THE RESOURCE TO `bd-hud` AFTER DOWNLOAD
+
 # Things you should know:
 
 - To open the menu in-game the **default key** is **"I"** or you can type **"/menu"**
